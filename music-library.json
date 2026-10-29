@@ -1,0 +1,35 @@
+[
+  {
+    "id": "forget-me-not",
+    "title": "Forget Me Not",
+    "label": "温柔钢琴 · 勿忘我",
+    "author": "Kistol",
+    "license": "CC0-1.0",
+    "source": "https://opengameart.org/content/forget-me-not",
+    "download": "https://opengameart.org/sites/default/files/forget_me_not_in_f_major_looped.ogg",
+    "file": "forget-me-not.ogg",
+    "sha256": "2b9b9fc512c34d52b999ed1fd7e01f960f830f3defc5d2241f6e02f8be81ef77"
+  },
+  {
+    "id": "lifewave",
+    "title": "Lifewave 2k",
+    "label": "舒缓氛围 · 生活的涟漪",
+    "author": "The Cynic Project / cynicmusic",
+    "license": "CC0-1.0",
+    "source": "https://opengameart.org/content/calm-ambient-3-lifewave-2k",
+    "download": "https://opengameart.org/sites/default/files/006_lifeWave2k_0.mp3",
+    "file": "lifewave.mp3",
+    "sha256": "f6a796483aee743d72fd9abd44002694246bb3a7977239abbace2a56a0d344ce"
+  },
+  {
+    "id": "simple-trifle",
+    "title": "A Simple Trifle",
+    "label": "轻柔钢琴 · 小小日常",
+    "author": "jestar",
+    "license": "CC0-1.0",
+    "source": "https://opengameart.org/content/a-simple-trifle",
+    "download": "https://opengameart.org/sites/default/files/ASimpleTrifle_0.ogg",
+    "file": "simple-trifle.ogg",
+    "sha256": "40353641ca8e968d63342c655bb3972a87382d2b808a07b550e849daa4a593bb"
+  }
+]

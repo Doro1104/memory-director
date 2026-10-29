@@ -1,0 +1,253 @@
+{
+  "version": "0.1.0-preview",
+  "files": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "sha256": "5ebc37b9c88000c3bcb20b1a54b0ff7371b488db1618f95207875bea0ea122ee"
+    },
+    {
+      "path": ".github/workflows/ios-build.yml",
+      "sha256": "455683a55113d58a54622740c54b2a0fd7729f92ac5c4a856043dc9318c84719"
+    },
+    {
+      "path": ".github/workflows/windows-check.yml",
+      "sha256": "103bf7941795c538499e94cee1739128fc745e45a8484bd7ad5f3018308568cc"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "fc19cb4ca89335c8ff2ba3f909b701050bcfc3665ede244eab038c816dde8ce2"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "f933d2d3895b62ed8f5df649371ddbc989fc017e06c44a586c38600df71a911d"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "9856e56c924ab2b5a2fe6f0a4dcd7e5baedb47ce53447aba3fad54dea39e9968"
+    },
+    {
+      "path": "PRIVACY.md",
+      "sha256": "942d7c92df2d41711489c8093e741eb9e1cf20743a31491a4d0e65a7f9cb8c82"
+    },
+    {
+      "path": "README.md",
+      "sha256": "527fe68f5f73b1e5e7c99dcead8a261021f60e5ab16a2d52d8b64d0fc0338e36"
+    },
+    {
+      "path": "RELEASE-CHECKLIST.md",
+      "sha256": "10c52631ea270a3174443d2b1ae0a252362141977f41d8a0aeeeb8cea3561df6"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "5989a9a2165740b2024a60c1ddfa36c71a4da79271a085a2568f452e3a6c8540"
+    },
+    {
+      "path": "THIRD_PARTY.md",
+      "sha256": "96e8596dc769ea9e0b128fe46fd0e27ba7f0da81ac734dae92ac4712fc5b8fcc"
+    },
+    {
+      "path": "app.py",
+      "sha256": "78f993f6c94bc4b00396bb427157d9a2ba7d089530d25df69787c930122cc2cb"
+    },
+    {
+      "path": "config.example.json",
+      "sha256": "2f5e66a103937ad0a6a08cf2228634486d310ea6818b2874b43249235b44380d"
+    },
+    {
+      "path": "curation.py",
+      "sha256": "725739993b3d49115b9bccdee4d095a495f7d0eeeddd069f8e25a30b753781e5"
+    },
+    {
+      "path": "deletion.py",
+      "sha256": "57d455b0205d7311b60f18140b25b79592e5077589638d1724562c7b9b486999"
+    },
+    {
+      "path": "doctor.py",
+      "sha256": "9687568f7d1d60c4f71c5f93ff98f467596636d39e0c8143ce086f8424006e0d"
+    },
+    {
+      "path": "enable-lan.ps1",
+      "sha256": "1bf8a7856eeee6697e8e3b82c5a9bf7868d112e752780b1ef896c9d562940d8a"
+    },
+    {
+      "path": "film_rules.py",
+      "sha256": "37cf833a1306a5abce1175e78910a7335bd42a7aba5babb87a03a6993f74081e"
+    },
+    {
+      "path": "install.ps1",
+      "sha256": "27df5aa69352c89803a1ff56f4342fea3b6396c03c833e78561f6caea1a51f0b"
+    },
+    {
+      "path": "ios/MemoryDirector.xcodeproj/project.pbxproj",
+      "sha256": "0a7aa7247ab911dd7f1626788e3bdc5ca64943d54ae9d985a051da58a3d83b54"
+    },
+    {
+      "path": "ios/MemoryDirector.xcodeproj/xcshareddata/xcschemes/MemoryDirector.xcscheme",
+      "sha256": "8e893756ac611b9392249468bd1ff18791d2d2a1d209c1f4e8375d361be480fd"
+    },
+    {
+      "path": "ios/MemoryDirector/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      "sha256": "3fb344504369c7f0927bf3d4ff9b6e3180cb6ef1ac4a09caf38e7e8fe8b0f2dc"
+    },
+    {
+      "path": "ios/MemoryDirector/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "sha256": "1b2cc6b6e1ad340faeaae5f07d292eb20c7a22c9995ac8795ea6aa604efa491d"
+    },
+    {
+      "path": "ios/MemoryDirector/Assets.xcassets/Contents.json",
+      "sha256": "e8e8ef4b27126d62305af321d12a6e64b866ca0b160f0f83efae90111f0ee576"
+    },
+    {
+      "path": "ios/MemoryDirector/HostClient.swift",
+      "sha256": "463e3ad52f82597ed7a1a4367777ade4114432327efc76869e3a62dec22b5621"
+    },
+    {
+      "path": "ios/MemoryDirector/Info.plist",
+      "sha256": "da8ec509831d98cdfa531a02cec5e10c743967bd532f89cb93a708830ea2a12d"
+    },
+    {
+      "path": "ios/MemoryDirector/MemoryDirectorApp.swift",
+      "sha256": "7e7d54ea14497dca0998052b7536378465abf60ab99b8296e9738d1050774030"
+    },
+    {
+      "path": "ios/MemoryDirector/Pairing.swift",
+      "sha256": "45a23f6783df7964887288f8bbd54bd44aa2a2b8764e8dfaff3ccc5900dc7458"
+    },
+    {
+      "path": "ios/MemoryDirector/PickedMedia.swift",
+      "sha256": "ea6729ee3d21da160f9042dfad6e59fb8848d6ff7065a664a5bdfa1ab1f1d88d"
+    },
+    {
+      "path": "ios/MemoryDirector/QRScanner.swift",
+      "sha256": "eddf3fb4516998b3931ad2830371f8d8d453401f01437d57a20d887fd5507518"
+    },
+    {
+      "path": "ios/README.md",
+      "sha256": "81c9fa506a30f4972760cb207bf3605d57bc003c3fdaae8076a7fc6ff6feda07"
+    },
+    {
+      "path": "ios/build-simulator.sh",
+      "sha256": "6c998b5f47b19fc0c8ba59af144dc95be7b3411e7e27fe4db60086d64653a9b6"
+    },
+    {
+      "path": "launch.py",
+      "sha256": "73ca27b6cf6b2417693cec115a6fd17191e58f154312f1a7846cb93c2fc222ca"
+    },
+    {
+      "path": "media_support.py",
+      "sha256": "6c87fa9e04f7a8865f5d771f273b20a29216f532fc9c6d253756a965aac1b151"
+    },
+    {
+      "path": "models-manifest.json",
+      "sha256": "058fe8863588b0d8ca0b1b3c726d0c3b50a3872c33939f548822dbe06e722d2d"
+    },
+    {
+      "path": "music-library.json",
+      "sha256": "4e922a0f35498461321baef9252b01f3f774cba55e510db631d19ecdc5c900b3"
+    },
+    {
+      "path": "processing.py",
+      "sha256": "e8eef474914e37b300444140e992f0269edab1484615e5e9363e2b7e8e386f86"
+    },
+    {
+      "path": "pytest.ini",
+      "sha256": "d5d397e0741cbcfac5dfbd92de530b771b76ab648c194fda801afb15fad017ba"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "783f4671408ef894417abf604263f7248e1f4dcb468a0d471abb9d9e174cb947"
+    },
+    {
+      "path": "runtime.py",
+      "sha256": "f00257b8b22535decb33776e98df1d30bd6665339ffd2a29c188b508f4709205"
+    },
+    {
+      "path": "server.py",
+      "sha256": "5b00140330bb08e4faf57be7c2a22809c3b5a5516f0efa30ba6fdd713ed13329"
+    },
+    {
+      "path": "setup_models.py",
+      "sha256": "62680306a8c61d79112a6f770cf6e9a9f7533ed7e705380d90e567e77ce7d220"
+    },
+    {
+      "path": "skills/memory-director-setup/SKILL.md",
+      "sha256": "5f094c0738508de2a3384c3b00a4edced7e9123d51054c91ee9e344fecbeb17c"
+    },
+    {
+      "path": "skills/memory-director-setup/agents/openai.yaml",
+      "sha256": "ab3dc1c8268f86b732cc7b38c8cca4bff5eff85b8892393683a43ddfddaf4c6f"
+    },
+    {
+      "path": "smoke.py",
+      "sha256": "f3d4611c12ac4edabfb8baf615ad62b820c1afe7fdb5dcd4cfe501768cce3a3b"
+    },
+    {
+      "path": "static/app.js",
+      "sha256": "892c2649b14a85d4667acd353fa0f34bc67cb588aa6a76722c4537974c3b87e1"
+    },
+    {
+      "path": "static/film.svg",
+      "sha256": "c19a76cc05e7cc5f3acfa8608c6d2ceddb800e28ca0397f3665a12379ad24e42"
+    },
+    {
+      "path": "static/index.html",
+      "sha256": "f5c35564a78e17e51c6711b7f9944cbd2acc85f9a7e7b0351a93b6f4eb01d83b"
+    },
+    {
+      "path": "static/style.css",
+      "sha256": "79d8b3abecfa541b37a8649cb71b07ff46b61979b5dc024b02f97d9366781ebb"
+    },
+    {
+      "path": "stop.ps1",
+      "sha256": "aeb78cbead5702f8dbade96027374f6c4bf8f82a1cae49ed711db672cb702779"
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "0767512ca389a52969e1c042f43402df74dac733094dc80906307e0ac0d23d26"
+    },
+    {
+      "path": "tests/conftest.py",
+      "sha256": "86fb63b5a2aef63d58da055f42ba8ce3df1e803b04ce36936162ad6751dc14b1"
+    },
+    {
+      "path": "tests/test_app.py",
+      "sha256": "6c083f89286814c274f5d4f3617e1224599823e161f5694b935ce99c6274e77e"
+    },
+    {
+      "path": "tests/test_people_merge.py",
+      "sha256": "4d3e0d72b0b1efa83223e22d82626a2f945b6a18c43d3e36c3d8b0c13319fb93"
+    },
+    {
+      "path": "tests/test_v3.py",
+      "sha256": "2acfeee10cdc47f84ddfa22060f697462e859d00a6c642b23ceab72791c37d8a"
+    },
+    {
+      "path": "tests/test_v4.py",
+      "sha256": "e13b4271027caf744a0d5ae7ae21df58290d0b33bc4d660bdf4b195ba52cc5db"
+    },
+    {
+      "path": "tests/test_v5.py",
+      "sha256": "90717433fc9ac50b0f0d1b2c55745bb6f27f52c1a1259f89a105c7bb2d327f9c"
+    },
+    {
+      "path": "tools/package_release.py",
+      "sha256": "0fc548ad34ae51c6778979d8ebfd632ca27d4b22412e535a94e72aca3e6ace17"
+    },
+    {
+      "path": "transport.py",
+      "sha256": "8b1a05d79433fc66b23b9132497eb129c779f4c54de3f8cef26aa98010738df2"
+    },
+    {
+      "path": "停止记忆导演.cmd",
+      "sha256": "5d942f2b55591242a94f068276bd7312865843a69d457fa62827e5361eea3339"
+    },
+    {
+      "path": "启动记忆导演.cmd",
+      "sha256": "7b824239cd7c4b7868c26e0f4eff2f554f5b272e54957076f8db75f76be5ebef"
+    },
+    {
+      "path": "安装记忆导演.cmd",
+      "sha256": "77fdbd92aeb440d26130fa1be4ae1212e46bc7f273737a41ae823bc4f2b5e18e"
+    }
+  ]
+}

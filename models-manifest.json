@@ -1,0 +1,92 @@
+[
+  {
+    "file": "face_detection_yunet_2023mar.onnx",
+    "url": "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx",
+    "sha256": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4",
+    "bytes": 232589
+  },
+  {
+    "file": "face_detection_yunet-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/opencv/opencv_zoo/main/models/face_detection_yunet/LICENSE",
+    "sha256": "c83b8120c50ccbd4c4f96edf53141bdd566ebb8f8e9227e415326aa1b1aba958",
+    "bytes": 1085
+  },
+  {
+    "file": "face_recognition_sface_2021dec.onnx",
+    "url": "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx",
+    "sha256": "0ba9fbfa01b5270c96627c4ef784da859931e02f04419c829e83484087c34e79",
+    "bytes": 38696353
+  },
+  {
+    "file": "face_recognition_sface-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/opencv/opencv_zoo/main/models/face_recognition_sface/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "file": "clip/vision_model_quantized.onnx",
+    "url": "https://huggingface.co/Xenova/clip-vit-base-patch32/resolve/main/onnx/vision_model_quantized.onnx",
+    "sha256": "583fd1110a514667812fee7d684952aaf82a99b959760c8d7dca7e0ab9839299",
+    "bytes": 89117001
+  },
+  {
+    "file": "clip/text_model_quantized.onnx",
+    "url": "https://huggingface.co/Xenova/clip-vit-base-patch32/resolve/main/onnx/text_model_quantized.onnx",
+    "sha256": "73baab855d406190da9faa498cfedf65f15cf309f4cc7385b7b032e6d08e5c3a",
+    "bytes": 64504507
+  },
+  {
+    "file": "clip/tokenizer.json",
+    "url": "https://huggingface.co/Xenova/clip-vit-base-patch32/resolve/main/tokenizer.json",
+    "sha256": "f7f3b7af117d467b58374797691a6438d3e6b9e9cef800dfd5dced7f697a90cd",
+    "bytes": 2224119
+  },
+  {
+    "file": "clip/preprocessor_config.json",
+    "url": "https://huggingface.co/Xenova/clip-vit-base-patch32/resolve/main/preprocessor_config.json",
+    "sha256": "6f638fb9401a6d6296feff533ee7efe657b787c49f954f82f5906b36ef2a1b1f",
+    "bytes": 520
+  },
+  {
+    "file": "clip/LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/openai/CLIP/main/LICENSE",
+    "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+    "bytes": 1064
+  },
+  {
+    "file": "face_landmarker.task",
+    "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+    "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+    "bytes": 3758596
+  },
+  {
+    "file": "multilingual/model.onnx",
+    "url": "https://huggingface.co/sentence-transformers/clip-ViT-B-32-multilingual-v1/resolve/58edf8cada9e398793dca955574a48cbb7f18be2/onnx/model_quint8_avx2.onnx",
+    "sha256": "fbc8fbeaa5237d96bd1bf430057c70d34de8334a463e933a5faa305f6caeed9c",
+    "bytes": 135377779
+  },
+  {
+    "file": "multilingual/tokenizer.json",
+    "url": "https://huggingface.co/sentence-transformers/clip-ViT-B-32-multilingual-v1/resolve/58edf8cada9e398793dca955574a48cbb7f18be2/tokenizer.json",
+    "sha256": "5b4e1a8171c81dfd666ae40265b9530c6e0b3d53923fe8ac493dcc84229adf81",
+    "bytes": 1961847
+  },
+  {
+    "file": "multilingual/dense.safetensors",
+    "url": "https://huggingface.co/sentence-transformers/clip-ViT-B-32-multilingual-v1/resolve/58edf8cada9e398793dca955574a48cbb7f18be2/2_Dense/model.safetensors",
+    "sha256": "d12568dc7300970a4d3dbb49068ad16cd89b99840b74b026f8e48071e9414f74",
+    "bytes": 1572984
+  },
+  {
+    "file": "multilingual/README.md",
+    "url": "https://huggingface.co/sentence-transformers/clip-ViT-B-32-multilingual-v1/resolve/58edf8cada9e398793dca955574a48cbb7f18be2/README.md",
+    "sha256": "023953714bc8541390994257494d21484994d84e45e01cd96304f0b5f9e770a2",
+    "bytes": 5647
+  },
+  {
+    "file": "multilingual/LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/Apache-2.0.txt",
+    "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+    "bytes": 10280
+  }
+]

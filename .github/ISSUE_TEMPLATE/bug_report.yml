@@ -1,0 +1,30 @@
+name: Bug report / 问题反馈
+description: 使用模拟素材和脱敏信息反馈问题
+body:
+  - type: markdown
+    attributes:
+      value: "请勿附上家庭照片/视频、人物头像、数据库、账号、密钥、证书、配对码、IP 地址、私人路径或原始日志。使用程序生成图片或公开授权样本复现。"
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期与实际表现
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 用模拟素材复现的步骤
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: doctor.py 脱敏状态摘要
+      description: 提交前自行检查，仅包含版本、模型校验数量和状态。
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 隐私检查
+      options:
+        - label: 我确认没有提交家庭素材、账号密钥、数据库、配对信息或私人文件路径。
+          required: true

@@ -1,0 +1,29 @@
+name: Windows synthetic checks
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          architecture: x64
+      - name: Install dependencies and public models
+        shell: pwsh
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python setup_models.py
+      - name: Synthetic offline self-test
+        run: python smoke.py
+      - name: Unit checks
+        shell: pwsh
+        run: |
+          if (-not (Get-Command ffprobe -ErrorAction SilentlyContinue)) { choco install ffmpeg -y --no-progress }
+          python -m pytest -q
+      - name: Verify source allowlist
+        run: python tools/package_release.py
