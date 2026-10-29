@@ -1,4 +1,4 @@
-# 0.1.0-preview 交付状态
+# 0.1.1-preview 交付状态
 
 ## 已验证
 
@@ -15,7 +15,7 @@
 - 当前打包环境没有 macOS、Xcode 或 Apple 签名身份。iPhone 工程尚未完成 Xcode 编译和真机验收，不能宣称已有可安装 IPA；提供了 Xcode 工程、模拟器构建脚本、手动 GitHub Actions 构建流程及真机清单。
 - 用户在 Mac 中选择自己的 Team 与 Bundle Identifier，完成真机安装、扫码权限、证书拒绝、相册导出（含 Live Photo）、大视频与切后台行为测试。问题按模拟样本复现后修复，再进入 TestFlight。
 - 无 Python 的全新 Windows 系统：自动下载官方 Python 并校验签名的分支已准备，尚未在空白虚拟机完整执行；当前验证的是寻找现有 Python 并创建全新环境。Python 3.11/3.12 及其他 Windows 版本也需补充矩阵验证。
-- GitHub Actions 文件已准备，但本次没有创建仓库或触发远端工作流。源包供用户自行建仓库发布。
+- GitHub Actions 为手动触发。0.1.1 固定 Git 文本换行规则，避免 Windows 检出转换换行符导致发布清单校验不一致；安装与功能测试使用云端模拟样本。
 
 ## 发布与隐私核查
 

@@ -12,6 +12,6 @@ MODEL_DIR=DATA_DIR/'models'
 WEB_PORT=int(CONFIG.get('web_port',7860))
 LAN_PORT=int(CONFIG.get('lan_port',7861))
 LAN_ENABLED=CONFIG.get('enable_lan',False) is True
-VERSION='0.1.0'
+VERSION='0.1.1'
 if not (1024<=WEB_PORT<=65535 and 1024<=LAN_PORT<=65535 and WEB_PORT!=LAN_PORT):
     raise ValueError('请选择两个不同的 1024–65535 端口')
