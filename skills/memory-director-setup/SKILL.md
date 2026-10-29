@@ -19,11 +19,11 @@ description: 安装、检查或升级记忆导演 Windows 本地主机，或指�
 ## Windows 安装
 
 1. 在用户指定的解压目录读取 README.md 和 PRIVACY.md；不要在其家庭素材目录中运行搜索。
-2. 执行 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File install.ps1 -DataDir <新数据目录> -EnableLan -IncludeMusic`。仅当用户需要手机连接时加 -EnableLan。不修改全局 PATH，不关闭防火墙或杀掉其他 Python 进程。
+2. 执行 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File install.ps1 -DataDir <新数据目录> -EnableWebLan -IncludeMusic`。仅当用户明确需要手机网页版并理解 HTTP 传输不加密、仅限可信家庭 Wi-Fi 时加 -EnableWebLan；原生 App 则使用独立的 -EnableLan HTTPS 选项。已有授权无需重复询问，不默认开启任何手机端口。不修改全局 PATH，不关闭防火墙或杀掉其他 Python 进程。
 3. 安装器建立独立 .venv，必要时安装 Python 到项目 .runtime，下载官方公开模型并核对 SHA-256。可以在已授权的安装范围内自动重试下载；校验不符就停止，不绕过校验或改用未指定镜像。
 4. 执行 `.venv\Scripts\python.exe doctor.py` 和 `.venv\Scripts\python.exe smoke.py`。smoke 只生成临时图形，在隔离数据库中验证；不连接用户真实图库。
-5. 启动 `启动记忆导演.cmd`，让用户自己在本机网页创建账号；不要代填或索取其密码。需要放行端口时使用 enable-lan.ps1，仅专用网络、本地子网、所选 HTTPS 端口，需系统管理员权限时说明原因后按宿主权限机制执行。
-6. 指导 iPhone App 扫描电脑“连接手机”中的配对码。配对码含局域网地址与公开证书指纹，不含密码；不要把它写进公共 Issue、示例、GitHub 或模型请求。
+5. 启动 `启动记忆导演.cmd`，让用户自己在本机网页创建账号；不要代填或索取其密码。需要放行端口时使用 enable-lan.ps1，仅专用网络、本地子网、已明确启用的手机端口，需系统管理员权限时说明原因后按宿主权限机制执行。
+6. 手机网页版用相机扫描“连接手机”里的网页二维码，在 Safari 打开并添加到主屏幕；不需要 Mac 或苹果签名。HTTP 入口没有完整离线能力，不能引导忽略证书警告。可选原生 iPhone App 使用折叠区域中的 HTTPS 配对码。配对码含局域网地址与公开证书指纹，不含密码；不要把它写进公共 Issue、示例、GitHub 或模型请求。
 
 ## 升级与排错
 

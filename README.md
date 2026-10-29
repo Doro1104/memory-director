@@ -1,30 +1,45 @@
 # 记忆导演 · Memory Director
 
-**0.1.1-preview / Windows 本地主机 + iPhone 上传客户端工程**
+**0.2.0-preview / Windows 本地主机 + 手机网页版（PWA）+ 可选 iPhone 工程**
 
-把日子，留成故事。电脑保存和处理照片、视频、人物分组、备注与回忆影片；手机只向配对的家用电脑上传用户选择的素材。模型在本机推理，应用不调用云端大模型。
+把日子，留成故事。电脑保存和处理照片、视频、人物分组、备注与回忆影片；手机通过浏览器或可选原生 App 向家用电脑上传用户主动选择的素材。模型在本机推理，应用不调用云端大模型。
 
 这是首个公开预览包。Windows 一键脚本和模拟素材测试用于验证部署；iPhone 工程需要在 Mac/Xcode 编译、签名和真机验收后才能安装分发。这里没有预签名 IPA。
 
 ## Windows 快速开始
 
 1. 解压到独立的程序目录；不要覆盖已有个人资料或自用安装。双击 **安装记忆导演.cmd**。
-2. 选择一个新的空数据目录。按需启用 iPhone 局域网连接。脚本为项目建立独立环境，必要时把 Python 官方安装到项目 `.runtime`，不修改全局 PATH。
+2. 选择一个新的空数据目录。按需启用手机网页版或原生 iPhone 安全连接。网页版使用 HTTP，仅适用于可信家庭 Wi-Fi，传输不加密。脚本为项目建立独立环境，必要时把 Python 官方安装到项目 `.runtime`，不修改全局 PATH。
 3. 安装需要联网下载依赖和模型（约数百 MB）。下载模型逐一核对 SHA-256；首次完成后，正常识别、选片和影片制作支持断开外网使用。
 4. 双击 **启动记忆导演.cmd**，在电脑本机网页创建账号。添加家庭账号也在电脑完成；没有默认密码。选择电脑中的照片或视频上传即可，不会自动扫描磁盘。
-5. 需要 iPhone：先启用安全局域网服务，在电脑“连接手机”查看配对码，使用已签名安装的 iPhone App 扫码并登录。
+5. 手机网页版：启用网页局域网连接，在电脑“连接手机”扫描 **网页二维码**，在 Safari 打开并登录。分享 → 添加到主屏幕，即可从桌面进入；不需要 Xcode、苹果签名或开发者年费。原生 App 的 HTTPS 配对码另列于折叠区域。
 
 Agent 部署可使用 [memory-director-setup Skill](skills/memory-director-setup/SKILL.md)。也可在解压目录执行：
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File install.ps1 -DataDir "D:\MemoryDirectorData" -EnableLan -IncludeMusic
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File install.ps1 -DataDir "D:\MemoryDirectorData" -EnableWebLan -IncludeMusic
 .venv\Scripts\python.exe doctor.py
 .venv\Scripts\python.exe smoke.py
 ```
 
 安装器支持寻找 Python 3.10–3.12 x64；发布前验证环境记录见 RELEASE-CHECKLIST.md。Windows 缺少微软 VC++ 运行库时，需在本机按错误提示安装微软官方运行库；脚本不会关闭安全软件或自动提升权限。详细安装输出留在本机 work/install.log，不能直接发给 Agent 或公共 Issue。
 
-电脑网页默认 `http://localhost:7860`（仅本机）；手机安全端口默认 7861。端口可在本地 `local-config.json` 调整；同时运行另一份安装时使用不同端口。启用局域网后需重启服务；如防火墙阻止，用户可明确以管理员身份运行 enable-lan.ps1，仅放行专用网络、本地子网的 HTTPS 端口。不要设置公网端口转发。
+默认只监听本机 `http://localhost:7860`，两个手机连接开关均关闭：
+
+- `-EnableWebLan`：允许家庭局域网浏览器通过 HTTP 端口 7860 访问。**HTTP 不加密账号或素材传输，只在可信家庭 Wi-Fi 使用；不要在公共/访客 Wi-Fi 或公网开放。**
+- `-EnableLan`：可选原生 iPhone App 的 HTTPS 端口 7861；保留扫码核对证书指纹的机制，不因启用网页而降低验证要求。
+
+既有安装可在原目录重新运行安装命令并加上需要的开关，保留已有配置与数据；随后重启服务。端口可在本地 `local-config.json` 调整。关闭网页局域网时将 `enable_web_lan` 改为 false 后重启。防火墙如阻止，明确以管理员身份运行 enable-lan.ps1，仅放行已开启的端口、专用网络和本地子网；不会自动提权或禁用防火墙。不要设置公网端口转发。
+
+## 手机网页版 / 主屏幕入口
+
+iPhone 用 Safari 打开网页，分享 → 添加到主屏幕；如有「作为网页 App 打开」则保持开启。安卓使用浏览器菜单的「安装应用」或「添加到主屏幕」。页面内也有完整引导；支持浏览器安装事件时显示安装按钮。桌面入口不涉及苹果签名和 7 天重装；账号会话过期时仍需重新登录。
+
+支持图库、人物、珍藏、备注、家庭放映室与手动多选上传。上传失败的文件可在当前页面重试，服务器按内容去重；**刷新/关闭页面后需重新选片，不是断点续传或后台全相册同步。** 上传期间保持同一 Wi-Fi、页面前台，避免锁屏；亮屏能力只在支持的安全上下文中尽力启用。
+
+HTTP 局域网可以添加桌面入口，但浏览器完整 PWA 安装、Service Worker 离线帮助等能力需要受信 HTTPS 或 localhost，且受浏览器版本限制。本版不自动安装根证书、不引导忽略 TLS 警告，也不把原生 App 的自签名 HTTPS 码当作可直接信任的网页入口。
+
+支持 Service Worker 时，离线只显示连接帮助；缓存仅有公开帮助页面、样式和图标，**不缓存照片、影片、人脸、备注、账号 HTML 或 API**。没有把任何选中素材写入 localStorage、IndexedDB 或后台同步队列。电脑休眠/关机不能浏览和上传；局域网地址改变后需重新扫码，可在路由器中为电脑保留固定地址。
 
 ## iPhone 首版
 

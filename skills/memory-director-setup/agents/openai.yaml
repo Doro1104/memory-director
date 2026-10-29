@@ -1,4 +1,4 @@
 interface:
   display_name: "记忆导演本地部署"
-  short_description: "部署本地主机与 iPhone 工程，使用模拟素材验证并保护家庭数据"
+  short_description: "部署本地主机与手机网页，使用模拟素材验证并保护家庭数据"
   default_prompt: "使用 $memory-director-setup 在我指定的目录安装记忆导演，使用模拟素材验证，不读取我的家庭照片或人物数据库。"

@@ -1,0 +1,21 @@
+/* Web app additions; all graphics and help content are public application assets. */
+.install-icon{width:72px;height:72px;border-radius:17px;display:block;margin:0 0 20px;box-shadow:0 8px 22px #29382f18}
+.install-steps{padding-left:24px;line-height:2}.install-steps li{padding-left:5px;margin-bottom:10px}
+.connection-url{display:block;overflow-wrap:anywhere;font-weight:600;margin:12px 0}.connection-copy{width:100%;min-height:85px;margin-top:12px}
+.native-pairing{margin-top:24px;border-top:1px solid var(--line,#e3e5dc);padding-top:18px}.native-pairing summary{cursor:pointer}
+.network-status{position:sticky;top:0;z-index:100;background:#fff2d8;color:#5e4925;display:flex;justify-content:center;align-items:center;gap:16px;padding:10px max(16px,env(safe-area-inset-left));font-size:13px;box-shadow:0 2px 10px #29382f12}
+.network-status button{white-space:nowrap;color:inherit}.transfer-hint{line-height:1.7}.transfer p{overflow-wrap:anywhere;max-height:180px;overflow:auto}
+.offline-page{margin:0;min-height:100vh;display:grid;place-items:center;background:#f6f4ef;color:#29382f;font:16px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:24px;box-sizing:border-box}
+.offline-card{max-width:480px;padding:36px;border-radius:24px;background:#fffefa;box-shadow:0 20px 70px #29382f0c}.offline-card h1{font-size:27px;line-height:1.4}.offline-card ol{padding-left:22px}.offline-card .eyebrow{font-size:10px;letter-spacing:2px;color:#7a8177}.offline-card .small{font-size:13px;color:#7a8177}.offline-card .primary{display:inline-block;background:#435e49;color:white;border-radius:9px;padding:11px 18px;text-decoration:none}
+@media(max-width:700px){
+  body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+  .topbar .top-actions{gap:8px;flex-wrap:wrap}.topbar{height:auto;min-height:60px;padding-top:9px;padding-bottom:9px}.topbar .local-badge{display:none}.install-entry{font-size:12px;min-height:40px}
+  input,select,textarea,.film-director label>input,.film-director label>select,.film-director textarea,.inline-person-name{font-size:16px!important}
+  .sidebar-bottom{top:calc(15px + env(safe-area-inset-top))}.sidebar nav button{min-height:44px}
+  dialog{max-height:calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain}
+  .transfer{bottom:max(14px,env(safe-area-inset-bottom));max-width:calc(100vw - 28px)}.toast{bottom:calc(18px + env(safe-area-inset-bottom))}
+  .network-status{align-items:flex-start;font-size:12px}.offline-card{padding:25px}.offline-card h1{font-size:24px}
+  .profile{display:flex!important}.sidebar-bottom .profile{margin:0;padding:0;border:0}.profile .avatar,.profile>div{display:none}.sidebar-bottom{display:flex;align-items:center;gap:6px}.profile button{min-width:36px;min-height:40px}
+  .rename-person{opacity:1}
+}
+@media(prefers-reduced-motion:no-preference){.install-icon{animation:pwa-arrive .35s ease-out}@keyframes pwa-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}

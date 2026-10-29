@@ -17,7 +17,7 @@ def checked_files():
         if relative.is_absolute() or '..' in relative.parts or BLOCKED.intersection(relative.parts):raise ValueError('Forbidden package path')
         if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(ROOT):raise ValueError('Unsafe package source')
         if path.suffix.lower() in BAD_EXT or '.sqlite' in path.name.lower():raise ValueError('Private artifact extension')
-        if path.suffix.lower()=='.png' and name!='ios/MemoryDirector/Assets.xcassets/AppIcon.appiconset/AppIcon.png':raise ValueError('Unapproved bitmap')
+        if path.suffix.lower()=='.png' and name not in {'ios/MemoryDirector/Assets.xcassets/AppIcon.appiconset/AppIcon.png','static/icons/app-180.png','static/icons/app-192.png','static/icons/app-512.png'}:raise ValueError('Unapproved bitmap')
         data=path.read_bytes()
         if hashlib.sha256(data).hexdigest()!=item['sha256']:raise ValueError('Public manifest mismatch: '+name)
         if TOKEN.search(data) or PROFILE.search(data):raise ValueError('Potential secret or user-profile path: '+name)
@@ -38,7 +38,7 @@ def archive(destination,names,prefix,strip_prefix=''):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=ROOT/'outputs');args=parser.parse_args()
-    names=checked_files();version='0.1.1-preview'
+    names=checked_files();version='0.2.0-preview'
     archive(args.output/f'memory-director-{version}-source.zip',names,'memory-director')
     ios=[n for n in names if n.startswith('ios/') or n in ('LICENSE','PRIVACY.md','RELEASE-CHECKLIST.md')]
     archive(args.output/f'memory-director-{version}-ios-source.zip',ios,'memory-director-ios')

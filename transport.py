@@ -8,7 +8,7 @@ from cryptography import x509
 from cryptography.hazmat.primitives import hashes,serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.x509.oid import NameOID
-from runtime import DATA_DIR,LAN_ENABLED,LAN_PORT
+from runtime import DATA_DIR,LAN_ENABLED,LAN_PORT,WEB_LAN_ENABLED,WEB_PORT
 
 
 def certificate():
@@ -34,7 +34,8 @@ def certificate():
 
 
 def connection_info(addresses):
-    if not LAN_ENABLED:return {'urls':[],'pairing':[]}
+    web_urls=[f'http://{address}:{WEB_PORT}' for address in addresses] if WEB_LAN_ENABLED else []
+    if not LAN_ENABLED:return {'urls':[],'pairing':[],'web_urls':web_urls}
     _,_,fingerprint=certificate()
     pairs=[{'version':1,'url':f'https://{address}:{LAN_PORT}','certificate_sha256':fingerprint} for address in addresses]
-    return {'urls':[p['url'] for p in pairs],'pairing':pairs}
+    return {'urls':[p['url'] for p in pairs],'pairing':pairs,'web_urls':web_urls}

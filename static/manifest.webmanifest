@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "记忆导演",
+  "short_name": "记忆导演",
+  "description": "把日子，留成故事。家中的私人记忆馆。",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f4ef",
+  "theme_color": "#f6f4ef",
+  "icons": [
+    {
+      "src": "/static/icons/app-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/icons/app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

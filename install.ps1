@@ -2,6 +2,7 @@
     [string]$DataDir,
     [string]$PythonExe,
     [switch]$EnableLan,
+    [switch]$EnableWebLan,
     [switch]$Interactive,
     [switch]$SkipModels,
     [switch]$IncludeMusic
@@ -24,6 +25,8 @@ try {
         $DataDir = Read-Host '输入新建的数据目录（回车使用安装目录下的 data；不要选择已有相册目录）'
         $answer = Read-Host '是否启用 iPhone 安全局域网连接？输入 y 或直接回车保持关闭'
         $EnableLan = $answer -eq 'y'
+        $webAnswer = Read-Host '是否启用手机网页版？HTTP 传输不加密，仅限可信家庭 Wi-Fi；输入 y 或回车关闭'
+        $EnableWebLan = $webAnswer -eq 'y'
     }
     $configPath = Join-Path $PSScriptRoot 'local-config.json'
     if (Test-Path -LiteralPath $configPath) {
@@ -54,9 +57,13 @@ try {
         Set-Content -LiteralPath $marker -Value 'Memory Director application data' -Encoding UTF8
     }
     if (-not (Test-Path -LiteralPath $configPath)) {
-        @{data_dir=$DataDir;web_port=7860;lan_port=7861;enable_lan=[bool]$EnableLan;install_id=[guid]::NewGuid().ToString()} | ConvertTo-Json | Set-Content -LiteralPath $configPath -Encoding UTF8
+        @{data_dir=$DataDir;web_port=7860;lan_port=7861;enable_lan=[bool]$EnableLan;enable_web_lan=[bool]$EnableWebLan;install_id=[guid]::NewGuid().ToString()} | ConvertTo-Json | Set-Content -LiteralPath $configPath -Encoding UTF8
     } elseif ($EnableLan -and -not $savedConfig.enable_lan) {
         $savedConfig.enable_lan = $true
+        $savedConfig | ConvertTo-Json | Set-Content -LiteralPath $configPath -Encoding UTF8
+    }
+    if ($EnableWebLan -and $savedConfig) {
+        $savedConfig | Add-Member -NotePropertyName enable_web_lan -NotePropertyValue $true -Force
         $savedConfig | ConvertTo-Json | Set-Content -LiteralPath $configPath -Encoding UTF8
     }
     if ($savedConfig -and -not $savedConfig.PSObject.Properties['install_id']) {
@@ -102,6 +109,7 @@ try {
     }
     & $venvPython doctor.py
     Write-Host '安装完成。双击 启动记忆导演.cmd，在本机网页创建账号。'
+    if ($EnableWebLan) { Write-Host '手机网页版已启用：HTTP 不加密，仅限可信家庭 Wi-Fi；需要保持电脑开机与页面前台。' }
     if ($EnableLan) { Write-Host '局域网连接使用 HTTPS。若防火墙阻止，请按 README 仅放行专用网络、本地子网的连接端口。' }
 } catch {
     $_ | Out-String | Add-Content -LiteralPath $installLog

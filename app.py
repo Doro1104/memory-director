@@ -125,6 +125,16 @@ def create_app(data_dir=None):
     def index():
         return send_file(ROOT / 'static/index.html')
 
+    @app.get('/sw.js')
+    def web_worker():
+        response = send_file(ROOT / 'static/sw.js', mimetype='text/javascript')
+        response.headers['Cache-Control'] = 'no-cache'
+        return response
+
+    @app.get('/api/reachability')
+    def reachability():
+        return jsonify(ok=True)
+
     @app.get('/api/session')
     def state():
         user = current()
@@ -793,8 +803,12 @@ def create_app(data_dir=None):
     def qr():
         from transport import connection_info
         info=connection_info(local_addresses());index=request.args.get('index','0')
-        if not index.isdigit() or int(index)>=len(info['pairing']):abort(400)
-        out=io.BytesIO();qrcode.make(json.dumps(info['pairing'][int(index)])).save(out,format='PNG');out.seek(0)
+        mode=request.args.get('mode','native')
+        if mode not in ('web','native'):abort(400)
+        values=info['web_urls'] if mode=='web' else info['pairing']
+        if not index.isdigit() or int(index)>=len(values):abort(400)
+        content=values[int(index)] if mode=='web' else json.dumps(values[int(index)])
+        out=io.BytesIO();qrcode.make(content).save(out,format='PNG');out.seek(0)
         return send_file(out,mimetype='image/png')
 
     return app

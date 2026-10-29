@@ -2,5 +2,6 @@
   "data_dir": "./data",
   "web_port": 7860,
   "lan_port": 7861,
-  "enable_lan": false
+  "enable_lan": false,
+  "enable_web_lan": false
 }

@@ -269,11 +269,48 @@ $('film-form').addEventListener('submit',async event=>{event.preventDefault();co
 $('settings-button').addEventListener('click',async()=>{$('settings-dialog').showModal();try{const info=await api('/api/storage');$('storage-info').replaceChildren();for(const [label,key]of [['手机新上传的照片与视频','uploads'],['旧格式迁移目录（默认不启用）','legacy'],['生成的回忆影片','films'],['账号、珍藏、人物与分享记录','database']]){const block=node('div');block.append(node('strong',label),node('code',info[key]));$('storage-info').append(block);}}catch(e){toast(e.message);}});
 $('user-form').addEventListener('submit',async event=>{event.preventDefault();const button=event.target.querySelector('button');button.disabled=true;try{await post('/api/users',Object.fromEntries(new FormData(event.target)));event.target.reset();toast('家庭账号已创建，请将名字和初始密码告诉家人');}catch(e){toast(e.message);}finally{button.disabled=false;}});
 $('import-button').addEventListener('click',async()=>{$('import-button').disabled=true;$('import-status').textContent='正在接入历史照片…';try{const r=await post('/api/import');$('import-status').textContent='已接入 '+r.added+' 张，不可用 '+r.missing+' 张。';await refreshStats();await loadAssets(true);}catch(e){$('import-status').textContent=e.message;}finally{$('import-button').disabled=false;}});
-$('logout').addEventListener('click',async()=>{if(uploading)return toast('请等待上传完成');try{await post('/api/logout');clearInterval(jobTimer);lastJobSignature='';await init();}catch(e){toast(e.message);}});
-$('connect-button').addEventListener('click',async()=>{$('connect-dialog').showModal();$('connection-list').replaceChildren();try{const info=await api('/api/connect');if(!info.pairing.length){$('connection-list').append(node('p','尚未启用安全局域网连接，请用安装脚本的 -EnableLan 选项配置。'));return;}for(const [index,pair]of info.pairing.entries()){const block=node('div','','connection');block.append(photo('/api/qr?index='+index,'iPhone App 配对二维码'),node('p',pair.url),node('p','请使用记忆导演 iPhone App 扫码。配对信息不含密码。','small'));const copy=action('复制配对信息',async()=>{try{await navigator.clipboard.writeText(JSON.stringify(pair));toast('配对信息已复制');}catch(e){toast('当前浏览器不支持复制，请使用 App 扫码');}},'secondary');block.append(copy);$('connection-list').append(block);}}catch(e){toast(e.message);}});
+$('logout').addEventListener('click',async()=>{if(uploading)return toast('请等待上传完成');try{await post('/api/logout');failedUploads=[];uploadOwner=null;$('transfer').hidden=true;$('transfer-status').textContent='';clearInterval(jobTimer);lastJobSignature='';await init();}catch(e){toast(e.message);}});
 for(const id of ['upload-button','empty-upload'])$(id).addEventListener('click',()=>{if(uploading)return toast('请等待本次上传完成');$('file-input').click();});
-function sendFile(file,index,total){return new Promise((resolve,reject)=>{const xhr=new XMLHttpRequest();xhr.open('POST','/api/upload?'+new URLSearchParams({name:file.name,modified:file.lastModified}));xhr.setRequestHeader('X-CSRF-Token',csrf);xhr.setRequestHeader('Content-Type','application/octet-stream');xhr.upload.addEventListener('progress',event=>{if(event.lengthComputable)$('transfer-progress').value=((index+event.loaded/event.total)/total)*100;});xhr.addEventListener('load',()=>{try{const result=JSON.parse(xhr.responseText);xhr.status>=400?reject(new Error(result.error||'上传失败')):resolve(result);}catch{reject(new Error('连接中断，请重试'));}});xhr.addEventListener('error',()=>reject(new Error('网络中断，请保持 Wi-Fi 连接')));xhr.send(file);});}
-$('file-input').addEventListener('change',async event=>{const files=[...event.target.files];if(!files.length||uploading)return;uploading=true;$('upload-button').disabled=true;$('transfer').hidden=false;$('transfer-close').hidden=true;let success=0,duplicates=0,live=0,failed=[];for(let i=0;i<files.length;i++){$('transfer-counter').textContent=(i+1)+' / '+files.length;$('transfer-status').textContent=files[i].name+' · 请保持页面打开';try{const r=await sendFile(files[i],i,files.length);r.ignored_live?live++:r.duplicate?duplicates++:success++;}catch(e){failed.push(files[i].name+'：'+e.message);}}$('transfer-progress').value=100;$('transfer-status').textContent='已收录 '+success+' 个，跳过重复 '+duplicates+' 个，失败 '+failed.length+' 个。'+(live?'已略过 '+live+' 份 Live 伴随短片。':'')+failed.join('；');$('transfer-close').hidden=false;uploading=false;$('upload-button').disabled=false;event.target.value='';try{await refreshStats();await loadAssets(true);await pollJobs();}catch(e){toast(e.message);}});
+let failedUploads=[],screenLock,uploadOwner;
+async function keepUploadAwake(){
+  if(!uploading||document.visibilityState!=='visible'||screenLock||!navigator.wakeLock)return;
+  try{const lock=await navigator.wakeLock.request('screen');if(!uploading){await lock.release();return;}screenLock=lock;lock.addEventListener('release',()=>{if(screenLock===lock)screenLock=null;});}catch{}
+}
+document.addEventListener('visibilitychange',()=>{if(uploading&&document.visibilityState==='visible')keepUploadAwake();});
+function sendFile(file,index,total){return new Promise((resolve,reject)=>{
+  const xhr=new XMLHttpRequest();xhr.open('POST','/api/upload?'+new URLSearchParams({name:file.name,modified:file.lastModified}));
+  xhr.timeout=30*60*1000;xhr.setRequestHeader('X-CSRF-Token',csrf);xhr.setRequestHeader('Content-Type','application/octet-stream');
+  xhr.upload.addEventListener('progress',event=>{if(event.lengthComputable){$('transfer-progress').value=((index+event.loaded/event.total)/total)*100;if(event.loaded===event.total)$('transfer-status').textContent=file.name+' · 电脑正在校验与收录，请稍候';}});
+  xhr.addEventListener('load',()=>{try{const result=JSON.parse(xhr.responseText);xhr.status>=400?reject(new Error(result.error||'上传失败')):resolve(result);}catch{reject(new Error('连接中断，请重试'));}});
+  xhr.addEventListener('error',()=>reject(new Error('连接中断，请确认电脑开机与 Wi-Fi 连接')));
+  xhr.addEventListener('timeout',()=>reject(new Error('本次传输超时，可以重新上传此文件')));
+  xhr.addEventListener('abort',()=>reject(new Error('上传已中断')));xhr.send(file);
+});}
+async function uploadFiles(files){
+  if(!files.length||uploading)return;
+  uploading=true;uploadOwner=user.id;failedUploads=[];$('upload-button').disabled=true;$('transfer').hidden=false;$('transfer-close').hidden=true;$('transfer-retry').hidden=true;$('transfer-progress').value=0;
+  let success=0,duplicates=0,live=0;const messages=[];keepUploadAwake();
+  try{
+    for(let i=0;i<files.length;i++){
+      $('transfer-counter').textContent=(i+1)+' / '+files.length;$('transfer-status').textContent=files[i].name+' · 请保持页面前台打开';
+      try{const r=await sendFile(files[i],i,files.length);r.ignored_live?live++:r.duplicate?duplicates++:success++;}
+      catch(e){failedUploads.push(files[i]);messages.push(files[i].name+'：'+e.message);}
+      $('transfer-progress').value=((i+1)/files.length)*100;
+    }
+    $('transfer-status').textContent='已收录 '+success+' 个，跳过重复 '+duplicates+' 个，失败 '+failedUploads.length+' 个。'+(live?'已略过 '+live+' 份 Live 伴随短片。':'')+messages.slice(0,5).join('；')+(messages.length>5?'；其余失败项目也可一并重试。':'');
+  }finally{
+    uploading=false;if(screenLock){screenLock.release().catch(()=>{});screenLock=null;}
+    $('transfer-close').hidden=false;$('transfer-retry').hidden=!failedUploads.length;$('upload-button').disabled=false;$('file-input').value='';
+  }
+  try{await refreshStats();await loadAssets(true);await pollJobs();}catch(e){toast('上传结果已保留，刷新图库时暂时未连上电脑。');}
+}
+$('file-input').addEventListener('change',event=>uploadFiles([...event.target.files]));
+$('transfer-retry').addEventListener('click',async()=>{
+  if(uploading)return;
+  try{const state=await api('/api/session');if(!state.user)return toast('请先重新登录，再选择未完成的文件上传');if(state.user.id!==uploadOwner){failedUploads=[];$('transfer').hidden=true;return toast('账号已切换，请重新选择本账号要上传的文件');}csrf=state.csrf;await uploadFiles([...failedUploads]);}catch(e){toast('暂时无法重试：'+e.message);}
+});
+$('transfer-close').addEventListener('click',()=>{failedUploads=[];$('transfer-retry').hidden=true;});
+
 $('transfer-close').addEventListener('click',()=>$('transfer').hidden=true);window.addEventListener('beforeunload',event=>{if(uploading){event.preventDefault();event.returnValue='';}});
 
 $('delete-confirm-cancel').addEventListener('click',()=>$('delete-confirm').close());

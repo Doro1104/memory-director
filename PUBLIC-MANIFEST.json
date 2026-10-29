@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1-preview",
+  "version": "0.2.0-preview",
   "files": [
     {
       "path": ".gitattributes",
@@ -31,19 +31,19 @@
     },
     {
       "path": "PRIVACY.md",
-      "sha256": "d2b43d40fb0090f735a1afb2e0c77b50e871424dd1d2cde934336aea9dd91881"
+      "sha256": "1143cadf17fd2074e22eca43ec190212e386a4da71433601a6322734d43494f5"
     },
     {
       "path": "README.md",
-      "sha256": "bf5c2686abe1660df46d1849fc9ddede9ba6d4b5c17bb41ecbeb2c0acdbf7b84"
+      "sha256": "daa4004d38458b93cf6b2a3f76f576a6a580beb2069781f4f34fe6bb11e2231e"
     },
     {
       "path": "RELEASE-CHECKLIST.md",
-      "sha256": "d17222f5915081a3abaaf043e8035821c0e09350f7e82aeaadfaddf3f24ba2d9"
+      "sha256": "9a117945aafa6f4fde415df3589001346fa4da8b04a59cc6eb820ad36f40b584"
     },
     {
       "path": "SECURITY.md",
-      "sha256": "5989a9a2165740b2024a60c1ddfa36c71a4da79271a085a2568f452e3a6c8540"
+      "sha256": "c9d838eb145e42afaa04e428aad9dbc3d8e8e3d900bdcb25d8ec1279aaea33be"
     },
     {
       "path": "THIRD_PARTY.md",
@@ -51,11 +51,11 @@
     },
     {
       "path": "app.py",
-      "sha256": "808a082e9244cb41fff4253792160d4d132b6c94791836c9573abd68d2a06e87"
+      "sha256": "9850a66df9dcebaa638aa679b5dcb45075d258a51dacbc066d7c18e8613ba234"
     },
     {
       "path": "config.example.json",
-      "sha256": "2f5e66a103937ad0a6a08cf2228634486d310ea6818b2874b43249235b44380d"
+      "sha256": "98913a94821b8afd6b3d5fce073bf87cf48c726d68a4c6a5d72eb99da41a6516"
     },
     {
       "path": "curation.py",
@@ -67,11 +67,11 @@
     },
     {
       "path": "doctor.py",
-      "sha256": "9687568f7d1d60c4f71c5f93ff98f467596636d39e0c8143ce086f8424006e0d"
+      "sha256": "2b21c0f5f49e5bebbce22665df2793d857fa7aece052fd3c6c7c6785d06004e8"
     },
     {
       "path": "enable-lan.ps1",
-      "sha256": "c15981c989e3ce8999b328e7aa047bca6261b7a58cab06d5209f8d55d2bd04f0"
+      "sha256": "7719fce9eca05d3e18422db7afa35b4c59e43cefc5a65935c59305ac13bf8732"
     },
     {
       "path": "film_rules.py",
@@ -79,7 +79,7 @@
     },
     {
       "path": "install.ps1",
-      "sha256": "aaf1689c88cdfc62c6bb6de5c562a557f9fa9634535a8db0e676d38c1cfcea05"
+      "sha256": "aa58d33a88b3c485976531c44e1225d77bb2f5f1255ce09ec5d08013bb9be63b"
     },
     {
       "path": "ios/MemoryDirector.xcodeproj/project.pbxproj",
@@ -163,11 +163,11 @@
     },
     {
       "path": "runtime.py",
-      "sha256": "6f469b30115081927fba6d6839f1a361a0453a1ef343c1ed0c8eb404ccb1f4fb"
+      "sha256": "0e3e0e0d537500a80d5e173481bbbce463e9876253adf73721215c8421a9dbab"
     },
     {
       "path": "server.py",
-      "sha256": "5b00140330bb08e4faf57be7c2a22809c3b5a5516f0efa30ba6fdd713ed13329"
+      "sha256": "9f737cbbe124e7fb37a1ad89f6f9bc9f9fc0f27cc5bac940aa94363a90df7272"
     },
     {
       "path": "setup_models.py",
@@ -175,11 +175,11 @@
     },
     {
       "path": "skills/memory-director-setup/SKILL.md",
-      "sha256": "5f094c0738508de2a3384c3b00a4edced7e9123d51054c91ee9e344fecbeb17c"
+      "sha256": "f866714cb43f8bba2174cb83221b9e1b7f9bbcda1d4789bd1fcf737f2f9f1d6a"
     },
     {
       "path": "skills/memory-director-setup/agents/openai.yaml",
-      "sha256": "ab3dc1c8268f86b732cc7b38c8cca4bff5eff85b8892393683a43ddfddaf4c6f"
+      "sha256": "877904dd32382661ae9c5af4eaf246671d4811a343bf48feda3e4af6bcac3b81"
     },
     {
       "path": "smoke.py",
@@ -187,19 +187,51 @@
     },
     {
       "path": "static/app.js",
-      "sha256": "b7c92644d167fd5f9fc7881d5c59add7782eab2ac9f09edaadc7d7fa08ff5ec2"
+      "sha256": "7546b4fc90dceef223a542602cddec7115ae79536b15a4d8e506e444ad8b9668"
     },
     {
       "path": "static/film.svg",
       "sha256": "8b7e474f9c5311b989a982cd044686adacd22962d92268b89f95b825344d569c"
     },
     {
+      "path": "static/icons/app-180.png",
+      "sha256": "404e232ca1d6282d8838d88dad59659892843cc42a6fdfb1b64abba599b9b238"
+    },
+    {
+      "path": "static/icons/app-192.png",
+      "sha256": "07fa975ef5182a6c912198fa62b5f3157f4a40c5efa0ee97bfa7f01c99550901"
+    },
+    {
+      "path": "static/icons/app-512.png",
+      "sha256": "8fe0863edd69d1a18e30c5d01c973c73603d644473e6d58d270c56cfc24d1010"
+    },
+    {
       "path": "static/index.html",
-      "sha256": "51a1c8976a1aa2b05f175e980accf925cc5245f51aa835acd9291fedfaceb0d7"
+      "sha256": "b5fd09b4a0130d15a6f5999f2f45d6a52854b0882f89af8ee3e70cd3adf16864"
+    },
+    {
+      "path": "static/manifest.webmanifest",
+      "sha256": "0b3d31675317e01b4c63c4b0acc0cc96b16fcf69261a22c42301345d85baea82"
+    },
+    {
+      "path": "static/offline.html",
+      "sha256": "a33ae55d0a440f3c998636c0212cc0960c57d7d234d4005df6f1032e6e9002d8"
+    },
+    {
+      "path": "static/pwa.css",
+      "sha256": "17da36d76af040390df7ad7829da42c39b21e6686be726dc64f2015fb1bfabd6"
     },
     {
       "path": "static/style.css",
       "sha256": "d9c7eb5676674f61ee20edb2b3ace312bf43e8c931f38e114926ca61166a2099"
+    },
+    {
+      "path": "static/sw.js",
+      "sha256": "5c2b64026b0fe4110c52ee16420eb536a892e47785078824a139bf01e9439f29"
+    },
+    {
+      "path": "static/web-app.js",
+      "sha256": "000b9c1c5f69c71aee90a904d56fb40026df4a6fb066b2ed8c15cad37462756f"
     },
     {
       "path": "stop.ps1",
@@ -222,6 +254,10 @@
       "sha256": "7a6dffb388a5e03b1cd7564590bbc0d351ef58b8b1d11f0f85546397716b69ce"
     },
     {
+      "path": "tests/test_pwa.py",
+      "sha256": "dbeb701da140c69017e24137323baa66a50118a9ad6781a6b3bc13670ed7337b"
+    },
+    {
       "path": "tests/test_v3.py",
       "sha256": "8b78b74c21cbd0fc119cfdca7bc1307b141693cf6336b9e5e4f403b958cc0e17"
     },
@@ -235,11 +271,11 @@
     },
     {
       "path": "tools/package_release.py",
-      "sha256": "f5792c6fbf67c42da402914e2800faeeed42172bfb49e0d46455866539dc78e0"
+      "sha256": "f0c7a39fdabef3b86189882e0e7e6b68920b80423df807a355070918cfea80b0"
     },
     {
       "path": "transport.py",
-      "sha256": "8b1a05d79433fc66b23b9132497eb129c779f4c54de3f8cef26aa98010738df2"
+      "sha256": "786f9438b03540cca8873b7798c8909dd23e2999232b6ba3bed812c3e0fdf7f1"
     },
     {
       "path": "停止记忆导演.cmd",
