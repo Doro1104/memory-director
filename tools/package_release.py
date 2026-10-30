@@ -38,7 +38,7 @@ def archive(destination,names,prefix,strip_prefix=''):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=ROOT/'outputs');args=parser.parse_args()
-    names=checked_files();version='0.2.0-preview'
+    names=checked_files();version='0.3.0-preview'
     archive(args.output/f'memory-director-{version}-source.zip',names,'memory-director')
     ios=[n for n in names if n.startswith('ios/') or n in ('LICENSE','PRIVACY.md','RELEASE-CHECKLIST.md')]
     archive(args.output/f'memory-director-{version}-ios-source.zip',ios,'memory-director-ios')

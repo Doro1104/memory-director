@@ -212,6 +212,7 @@ async function refreshFilms(){
     const body=node('div','','film-card-body');body.append(node('span',film.period,'eyebrow'),node('h3',film.title),node('p',film.notes||'完成后即可观看与下载。','small'));
     if(film.status==='done'&&!film.blocked)body.append(action('▷ 开始放映',()=>openFilm(film),'primary'));
     else if(film.status==='error')body.append(action('重新制作',()=>createFilm(film.period,film.title),'secondary'));
+    if(film.owner===user.id&&film.has_director)body.append(action('方案与反馈',()=>openDirectorFeedback(film),'secondary compact'));
     if(film.owner===user.id)body.append(action('删除影片',()=>deleteFilm(film),'danger-button delete-film'));
     card.append(cover,body);$('film-list').append(card);
   }
@@ -317,7 +318,7 @@ $('delete-confirm-cancel').addEventListener('click',()=>$('delete-confirm').clos
 $('clear-trash').addEventListener('click',()=>{excluded.clear();trashAssets([],false,true,true);});
 $('select-all-trash').addEventListener('click',()=>{allTrash=true;excluded.clear();selected.clear();selectionUI();});
 $('purge-selected').addEventListener('click',()=>trashAssets([...selected],false,true,allTrash));
-$('render-reviewed-film').addEventListener('click',async()=>{$('render-reviewed-film').disabled=true;try{await post('/api/films',{...reviewSettings,ids:[...reviewSelected]});$('film-preview').close();toast('已按确认的素材开始制作高清影片');await refreshFilms();await pollJobs();}catch(e){toast(e.message);reviewCount();}});
+$('render-reviewed-film').addEventListener('click',async()=>{$('render-reviewed-film').disabled=true;try{await prepareDirector({...reviewSettings,ids:[...reviewSelected]});$('film-preview').close();}catch(e){toast(e.message);reviewCount();}});
 $('photo-fit').addEventListener('click',fitPhoto);$('photo-actual').addEventListener('click',()=>setPhotoZoom(1));$('photo-in').addEventListener('click',()=>setPhotoZoom(imageZoom*1.5));$('photo-out').addEventListener('click',()=>setPhotoZoom(imageZoom/1.5));
 $('retry-video').addEventListener('click',()=>{const media=$('viewer-media').querySelector('video');if(currentAsset&&media)prepareVideo(currentAsset,media,true);});
 $('viewer-media').addEventListener('dblclick',()=>{if(!$('viewer').classList.contains('image-viewer'))return;Math.abs(imageZoom-imageFit)<.01?setPhotoZoom(1):fitPhoto();});

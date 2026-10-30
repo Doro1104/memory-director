@@ -314,6 +314,10 @@ def render_film(conn,data,job):
     film=conn.execute('SELECT * FROM films WHERE id=?',(fid,)).fetchone()
     check_film_active(conn,fid)
     options=json.loads(film['options'] or '{}')
+    if options.get('director'):
+        from director_render import render
+        conn.execute("UPDATE films SET status='running' WHERE id=?",(fid,));conn.commit()
+        return render(conn,data,job,film,options)
     conn.execute("UPDATE films SET status='running' WHERE id=?",(fid,));conn.commit()
     ids=options.get('ids')
     if not ids:

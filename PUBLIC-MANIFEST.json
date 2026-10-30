@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0-preview",
+  "version": "0.3.0-preview",
   "files": [
     {
       "path": ".gitattributes",
@@ -26,24 +26,32 @@
       "sha256": "f933d2d3895b62ed8f5df649371ddbc989fc017e06c44a586c38600df71a911d"
     },
     {
+      "path": "AI_WORKFLOW.md",
+      "sha256": "11dd691c1e0e7b15bfcf80f30fd31a5db166588abb12b798032e9b02e082f2ef"
+    },
+    {
+      "path": "EDITING_RULES.md",
+      "sha256": "1a60c5261dd9e264744c038f9f666ae8e65efca4ae12fb72a8cacce8caf3dc81"
+    },
+    {
       "path": "LICENSE",
       "sha256": "9856e56c924ab2b5a2fe6f0a4dcd7e5baedb47ce53447aba3fad54dea39e9968"
     },
     {
       "path": "PRIVACY.md",
-      "sha256": "1143cadf17fd2074e22eca43ec190212e386a4da71433601a6322734d43494f5"
+      "sha256": "9e00658f6a06bd3f77bcbb119f1c1d93e4a7a7c9abffc8003f94caede3514c0a"
     },
     {
       "path": "README.md",
-      "sha256": "daa4004d38458b93cf6b2a3f76f576a6a580beb2069781f4f34fe6bb11e2231e"
+      "sha256": "26d89cdf86bd6202a0073af97bc2eba727651226c8270f6c1c21a3e717836104"
     },
     {
       "path": "RELEASE-CHECKLIST.md",
-      "sha256": "9a117945aafa6f4fde415df3589001346fa4da8b04a59cc6eb820ad36f40b584"
+      "sha256": "07c9f004893215f13d9120f0e9ac091565530b05fb36c7dd88b5eec6c107a0fd"
     },
     {
       "path": "SECURITY.md",
-      "sha256": "c9d838eb145e42afaa04e428aad9dbc3d8e8e3d900bdcb25d8ec1279aaea33be"
+      "sha256": "9a18ff45d7dd85fe995d455036ad82eb9addbbbea2f8403ec3f70516e7ffd56e"
     },
     {
       "path": "THIRD_PARTY.md",
@@ -51,7 +59,7 @@
     },
     {
       "path": "app.py",
-      "sha256": "9850a66df9dcebaa638aa679b5dcb45075d258a51dacbc066d7c18e8613ba234"
+      "sha256": "2d8881b21111f69b929e6b7f23cb51888418d9ec360ca454df53d4f6146004ad"
     },
     {
       "path": "config.example.json",
@@ -64,6 +72,22 @@
     {
       "path": "deletion.py",
       "sha256": "5d368ac8316132697307c94eb04763a743eb1b8b031b2fd5caae6c87168809f1"
+    },
+    {
+      "path": "director.py",
+      "sha256": "d95e76543bde52ec59788d72e4d75c5771459adcdca72e8e4462e061fc2836bb"
+    },
+    {
+      "path": "director_api.py",
+      "sha256": "b54a494a352b45dac9f278f4786b074bb0140279612a715932d57ce661ce1191"
+    },
+    {
+      "path": "director_provider.py",
+      "sha256": "9552c495abe866e164a7f09e6dee110ed8a3ad5fea752ce19462c747bf59248c"
+    },
+    {
+      "path": "director_render.py",
+      "sha256": "d99d63e7fa1feefc63e120255292c38a4ce89b39b79e1ab5e366f7f5531c86ea"
     },
     {
       "path": "doctor.py",
@@ -151,7 +175,7 @@
     },
     {
       "path": "processing.py",
-      "sha256": "d587e90d212886d66ef32ce0a65c40b17c1c977c6c4f8ddeedaa060816ef05c4"
+      "sha256": "8033bf7a872844e6cfa659f8c6438e9f943ba777a3aaafa8d77ca33fe6ef5780"
     },
     {
       "path": "pytest.ini",
@@ -163,7 +187,7 @@
     },
     {
       "path": "runtime.py",
-      "sha256": "0e3e0e0d537500a80d5e173481bbbce463e9876253adf73721215c8421a9dbab"
+      "sha256": "05e5c903a1bb6b84dbc5cdf34b898cea6d89e8bbcc56c2a826ac8611fa44ea90"
     },
     {
       "path": "server.py",
@@ -175,7 +199,7 @@
     },
     {
       "path": "skills/memory-director-setup/SKILL.md",
-      "sha256": "f866714cb43f8bba2174cb83221b9e1b7f9bbcda1d4789bd1fcf737f2f9f1d6a"
+      "sha256": "3e4ad9b5ff70aec3b1e70c973ebc03f3ca0c87b0bce6e65207aff7bc622ac147"
     },
     {
       "path": "skills/memory-director-setup/agents/openai.yaml",
@@ -187,7 +211,15 @@
     },
     {
       "path": "static/app.js",
-      "sha256": "7546b4fc90dceef223a542602cddec7115ae79536b15a4d8e506e444ad8b9668"
+      "sha256": "4d88be6d1552b74b676c1a5ed04d53cde6e69181ddb2d5f536840dd758f190b1"
+    },
+    {
+      "path": "static/director.css",
+      "sha256": "347137c7f0e12034fb7632cb5da251312d17748c55899f2c140dcac69156f5eb"
+    },
+    {
+      "path": "static/director.js",
+      "sha256": "bad871a585bd12122d701f17289a0f7b8bf7d7ba1d63a8da583a68f0785e90bc"
     },
     {
       "path": "static/film.svg",
@@ -207,7 +239,7 @@
     },
     {
       "path": "static/index.html",
-      "sha256": "b5fd09b4a0130d15a6f5999f2f45d6a52854b0882f89af8ee3e70cd3adf16864"
+      "sha256": "f9664b78a223f5dd5e57a0395961bab6c6a241f7d264bcaac7f4dbc9b2f3581a"
     },
     {
       "path": "static/manifest.webmanifest",
@@ -250,6 +282,10 @@
       "sha256": "14dff59dcfadc60fe3cdd4db57ade99af67a22c1e79b44f4223d04c38345af29"
     },
     {
+      "path": "tests/test_director.py",
+      "sha256": "32fe0abdedcb8a740399e3b030bb201727699780ecfb66821f027d8cd0477ce5"
+    },
+    {
       "path": "tests/test_people_merge.py",
       "sha256": "7a6dffb388a5e03b1cd7564590bbc0d351ef58b8b1d11f0f85546397716b69ce"
     },
@@ -271,7 +307,7 @@
     },
     {
       "path": "tools/package_release.py",
-      "sha256": "f0c7a39fdabef3b86189882e0e7e6b68920b80423df807a355070918cfea80b0"
+      "sha256": "b2f5002f7d6e7ff952ec8e6072fcad10c0fb979c0daba404626897947bdd00d1"
     },
     {
       "path": "transport.py",

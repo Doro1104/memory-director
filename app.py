@@ -642,7 +642,7 @@ def create_app(data_dir=None):
     @app.get('/api/films')
     @login_required
     def films():
-        return jsonify(items=[dict(r) for r in db().execute('''SELECT f.id,f.title,f.period,f.status,f.shared,f.notes,f.owner,
+        return jsonify(items=[dict(r) for r in db().execute('''SELECT f.id,f.title,f.period,f.status,f.shared,f.notes,f.owner,(instr(f.options,'"director"')>0) AS has_director,
             EXISTS(SELECT 1 FROM film_assets fa JOIN assets a ON fa.asset=a.id WHERE fa.film=f.id AND a.deleted_at IS NOT NULL) blocked
             FROM films f WHERE (f.owner=? OR f.shared=1) AND f.deleted_at IS NULL ORDER BY f.created DESC''',(g.user['id'],))])
 
@@ -811,6 +811,8 @@ def create_app(data_dir=None):
         out=io.BytesIO();qrcode.make(content).save(out,format='PNG');out.seek(0)
         return send_file(out,mimetype='image/png')
 
+    from director_api import register as register_director
+    register_director(app,db,login_required,data,validate_film_options)
     return app
 
 
